@@ -1,16 +1,15 @@
-# wather_app
+forecast api
 
-A new Flutter project.
 
-## Getting Started
+https://api.openweathermap.org/data/2.5/forecast?lat=37.421998333333335&lon=-122.084&units=metric&appid=cc93193086a048993d938d8583ede38a&fbclid=IwAR33qu_23YmppyIkRADDtfii6J-a0lEj9PoUK7oto5Xepq4vTYI9I580qU4
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+weathar api
+https://api.openweathermap.org/data/2.5/weather?lat=37.42200&lon=-122.084&exclude=hourly%2Cdaily&appid=cc93193086a048993d938d8583ede38a&fbclid=IwAR3DD4zFU_h8TTgdM8YXKgs0IJuTjF3znUHQyiF2S4V9XBqICxICCAvifVI
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+output
+
+![weather](https://user-images.githubusercontent.com/71599885/173246027-7a22f2e4-6654-4ad2-b1b1-5e7227ea82e3.jpg)
