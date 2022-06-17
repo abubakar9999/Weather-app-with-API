@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'package:wather_app/httpdata.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ double? lataitute;
 double? longatitute;
 
 class _HomePageState extends State<HomePage> {
+  bool stutus = false;
   //todo  golocatro
   late Position position;
 
@@ -56,10 +58,10 @@ class _HomePageState extends State<HomePage> {
 
   facthData() async {
     var weatherRespons = await http.get(Uri.parse(
-        "https://api.openweathermap.org/data/2.5/weather?lat=$lataitute&lon=$longatitute&exclude=hourly%2Cdaily&appid=cc93193086a048993d938d8583ede38a&fbclid=IwAR0tvYJ7vTYYRMuGJXxUpQ2HZFMHqS0256KucjW8G1CkGlufjYRCFSv0UHk"));
+        "https://api.openweathermap.org/data/2.5/weather?lat=$lataitute&lon=$longatitute&exclude=hourly%2Cdaily&appid=0cac39049510ae140169d592847aa4e0"));
 
     var forcaustRespons = await http.get(Uri.parse(
-        "https://api.openweathermap.org/data/2.5/forecast?lat=$lataitute&lon=$longatitute&units=metric&appid=cc93193086a048993d938d8583ede38a&fbclid=IwAR13whb-ohApYd8bYh1CO3CtOGbJZ4vCC6_ngYRHCYAjgRytTJtH28AHfC8"));
+        "https://api.openweathermap.org/data/2.5/forecast?lat=$lataitute&lon=$longatitute&units=metric&appid=0cac39049510ae140169d592847aa4e0"));
 
     print(forcaustRespons.body);
     print(weatherRespons.body);
@@ -80,6 +82,31 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text("Weather App"),
+          actions: [
+            Icon(Icons.search),
+            Container(
+              child: FlutterSwitch(
+                inactiveText: "F",
+                activeText: "C",
+                activeColor: Colors.green,
+                width: 50.0,
+                height: 30.0,
+                valueFontSize: 10.0,
+                toggleSize: 20,
+                value: stutus,
+                borderRadius: 12.0,
+                showOnOff: true,
+                onToggle: (val) {
+                  setState(() {
+                    stutus = val;
+                  });
+                },
+              ),
+            ),
+          ],
+        ),
         body: forcustMap != null
             ? SafeArea(
                 child: Padding(
@@ -98,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 16, fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            "${wattheMap!["base"]}",
+                            "${wattheMap!["name"] == null ? "Dhaka Bangladesh" : "Dhaka Bangladesh"}",
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.w600),
                           ),
